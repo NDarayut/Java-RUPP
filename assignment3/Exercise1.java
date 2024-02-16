@@ -1,5 +1,3 @@
-//Group 6 
-
 //import scanner class
 import java.util.Scanner;
 //import arrays class to use sort and equal method
