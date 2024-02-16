@@ -2,7 +2,8 @@ import java.util.Scanner; // Import scanner class
 
 public class Exercise6 {
     public static void main(String[] args) {
-          Scanner input = new Scanner(System.in); // Create scanner object
+        
+        Scanner input = new Scanner(System.in); // Create scanner object
         System.out.print("Enter 10 numbers: ");
    
         String numbers = input.nextLine();  // Store user input in string 
@@ -46,3 +47,4 @@ public class Exercise6 {
         }
     }
 }
+
