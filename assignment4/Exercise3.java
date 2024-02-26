@@ -12,7 +12,7 @@ public class Exercise3 {
         for(int i = (array.length * 2) - 1 ; i >= 0; i--){
            
             // cols always start from 0 then increasse by 1
-            for(int cols = 0; cols <= i + 2 ; cols++){
+            for(int cols = 0; cols < array.length ; cols++){
                 // rows start from last rows of array then decrease by 1
                 // but it increase by 1 again when cols increase by 1
                 int rows = i - array.length + cols;
