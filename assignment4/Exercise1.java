@@ -1,4 +1,3 @@
-//Group 6
 import java.util.Scanner;   // Import scanner class
 
 class Exercise1{
