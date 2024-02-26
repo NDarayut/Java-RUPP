@@ -9,7 +9,7 @@ public class Exercise3 {
         // i start from 7 but rows will deduct it by length of array
         // which will always end up at last row of array
         // no matter the dimension
-        for(int i = (array.length * 2) - 1 ; i >= 0; i--){
+        for(int i = (array.length * 2) - 1 ; i > 0; i--){
            
             // cols always start from 0 then increasse by 1
             for(int cols = 0; cols < array.length ; cols++){
