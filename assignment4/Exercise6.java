@@ -1,5 +1,3 @@
-// Group 6
-
 import java.lang.Math; // Import math class
 
 public class Exercise6 {
