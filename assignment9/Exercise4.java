@@ -6,45 +6,45 @@ class Account{
     // initialize instance variable
     // These instance variable hold specific value to the individual object
     // Each object has their own specific data of instance variable
-    Integer accountNumber;
-    String username;
-    double accountBalance;
-    String accountPassword;
+    Integer accountNo;
+    String name;
+    double balance;
+    String password;
 
     // when each object is created, the constructor store specific value upon creating an object
     // e.g person1(1001, "Sak", 2, "123") will have its constructor store those specific value to the instance variable
     Account(Integer accountNo, String name, double balance, String password){
-        this.accountNumber = accountNo;
-        this.username = name;
-        this.accountBalance = balance;
-        this.accountPassword = password;
+        this.accountNo = accountNo;
+        this.name = name;
+        this.balance = balance;
+        this.password = password;
     }
 
     // Method to calculate the withdrawal amount
     void withdraw(double withdrawAmount){
-        accountBalance-=withdrawAmount;
+        balance-=withdrawAmount;
         System.out.println("\n\t\tWithdrawal successful!");
-        System.out.println("\t\tRemaining balance: " + accountBalance);
+        System.out.println("\t\tRemaining balance: " + balance);
     }
 
     // Method to calculate the deposit amount
     void deposit(double depositAmount){
-        accountBalance+=depositAmount;
+        balance+=depositAmount;
         System.out.println("\n\t\tDeposit successful!");
-        System.out.println("\t\tCurrent balance: " + accountBalance);
+        System.out.println("\t\tCurrent balance: " + balance);
     }
 
     // Method to calculate the transfer amount between account
     void transfer(Account transferAccount, double transferAmount){
-        accountBalance-=transferAmount;
-        transferAccount.accountBalance+=transferAmount; // add the transfer amount to the designated account
+        balance-=transferAmount;
+        transferAccount.balance+=transferAmount; // add the transfer amount to the designated account
         System.out.println("\n\t\tTransfer complete!");
 
         /*  Debug showing another user balance 
         System.out.println(transferAccount.accountBalance);
         */
 
-        System.out.println("\t\tRemaining balance: " + accountBalance); // shows out balance
+        System.out.println("\t\tRemaining balance: " + balance); // shows out balance
     }
 }
 
@@ -79,11 +79,11 @@ public class Exercise4{
         HashMap<Integer, Account> accounts = new HashMap<>(); // Create hashmap with class as value
 
         // input all the accounts into the hashmap
-        accounts.put(person1.accountNumber, person1);
-        accounts.put(person2.accountNumber, person2);
-        accounts.put(person3.accountNumber, person3);
-        accounts.put(person4.accountNumber, person4);
-        accounts.put(person5.accountNumber, person5);
+        accounts.put(person1.accountNo, person1);
+        accounts.put(person2.accountNo, person2);
+        accounts.put(person3.accountNo, person3);
+        accounts.put(person4.accountNo, person4);
+        accounts.put(person5.accountNo, person5);
 
         // Infinite loop asking user to input their account info
         while(true){
@@ -97,7 +97,7 @@ public class Exercise4{
             String inputPassword = input.nextLine(); // user account password
 
             // If both user account number and password is correct
-            if(accounts.containsKey(inputAccountNumber) && (accounts.get(inputAccountNumber).accountPassword.equals(inputPassword))){
+            if(accounts.containsKey(inputAccountNumber) && (accounts.get(inputAccountNumber).password.equals(inputPassword))){
                 System.out.print("\033\143"); // clear terminal
                 System.out.println("\n\t\tLogin successful!"); 
 
@@ -107,12 +107,7 @@ public class Exercise4{
                     
                     System.out.print("\n\t\tEnter: ");
                     inputOption = input.nextLine();
-
-                    // break out of the do{} loop if user enters "e"
-                    if("e".equals(inputOption)){
-                        break;
-                    }
-
+                    
                     // switch case checking for user option
                     // Java version 22.0.1
                     switch(inputOption){
@@ -122,9 +117,9 @@ public class Exercise4{
                             System.out.println("\t\tPlease wait...\n");
                             Thread.sleep(1500); // Delay the program by 1.5s
                             System.out.println("\t\t-----------------------------");
-                            System.out.print(String.format("\t\t\t%-27s", accounts.get(inputAccountNumber).username + "'s Account"));
+                            System.out.print(String.format("\t\t\t%-27s", accounts.get(inputAccountNumber).name + "'s Account"));
                             System.out.println("\n\t\t-----------------------------");
-                            System.out.println("\t\tBalance: " + accounts.get(inputAccountNumber).accountBalance);
+                            System.out.println("\t\tBalance: " + accounts.get(inputAccountNumber).balance);
                         }
 
                         case "b" -> {
@@ -135,7 +130,7 @@ public class Exercise4{
                                 double withdraw = input.nextDouble();
 
                                 // If the account balance matches or more than the withdrawal amount
-                                if(accounts.get(inputAccountNumber).accountBalance >= withdraw){
+                                if(accounts.get(inputAccountNumber).balance >= withdraw){
                                     System.out.println("\n\t\tProcessing...");
                                     Thread.sleep(1500);
                                     accounts.get(inputAccountNumber).withdraw(withdraw);
@@ -183,7 +178,7 @@ public class Exercise4{
 
                                 System.out.print("\t\tEnter password: ");
                                 input.nextLine(); // clear buffer
-                                String userPAssword = input.nextLine();
+                                String userPassword = input.nextLine();
 
                                 // check if the transfer account doesnt exist
                                 if(!accounts.containsKey(accountTransfer)){
@@ -196,7 +191,7 @@ public class Exercise4{
                                 }
 
                                 // check if the password is incorrect
-                                else if(!userPAssword.equals(accounts.get(inputAccountNumber).accountPassword)){
+                                else if(!userPassword.equals(accounts.get(inputAccountNumber).password)){
                                     System.out.print("\033\143"); // clear terminal
                                     System.out.println("\t\tWrong password!");
                                     System.out.println("\t\ta. Back\n\t\tb. Try again");
@@ -206,7 +201,7 @@ public class Exercise4{
                                 }
 
                                 // check if the balance is insufficient
-                                else if(accounts.get(inputAccountNumber).accountBalance < transferAmount){
+                                else if(accounts.get(inputAccountNumber).balance < transferAmount){
                                     System.out.print("\033\143"); // clear terminal
                                     System.out.println("\t\tInsufficient balance!");
                                     System.out.println("\t\ta. Back\n\t\tb. Try again");
